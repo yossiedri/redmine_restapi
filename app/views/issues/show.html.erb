@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Site:</b>
+  <%= @issue.site %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @issue.user %>
+</p>
+
+<p>
+  <b>Password:</b>
+  <%= @issue.password %>
+</p>
+
+
+<%= link_to 'Edit', edit_issue_path(@issue) %> |
+<%= link_to 'Back', issues_path %>

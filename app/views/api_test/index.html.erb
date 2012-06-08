@@ -1,0 +1,12 @@
+<h1>ApiTest#index</h1>
+<%= link_to 'Get Issue',api_test_issues_path,:to => 'get_issue' %>
+<%= link_to 'Set Issue',api_test_issues_path,:to => 'set_issue' %>
+<%= link_to 'Get projects',api_test_projects_path,:to => 'get_projects' %>
+<%= link_to 'Get comments',api_test_comments_path,:to => 'get_comments' %>
+
+
+<!-- http://debug-redmine.mtl.com/issues/2655.json?key=07d0abefe52230132230f6e57650bfaa85189ee7
+ -->
+
+<%= link_to 'Get Issue',"http://debug-redmine.mtl.com/issues.xml?Key=07d0abefe52230132230f6e57650bfaa85189ee7",
+:method => :get %>
