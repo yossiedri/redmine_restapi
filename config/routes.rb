@@ -1,4 +1,4 @@
-RedmineApi::Application.routes.draw do
+RedmineRestapi::Application.routes.draw do
 
   resources :issues
 

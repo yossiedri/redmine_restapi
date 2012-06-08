@@ -15,4 +15,4 @@
 /tmp
 
 # redmine server user and pass
-/config/redmine_server.yml
+/config/redmineserver.yml
