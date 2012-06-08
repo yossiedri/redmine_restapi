@@ -1,12 +1,7 @@
-require 'rubygems'
-require 'active_resource'
 
-class Issue < ActiveResource::Base
-  
-	self.site = RedmineConfig['site']
-	self.user = RedmineConfig['user']
-	self.password = RedmineConfig['password']
 
+class Issue < Base
+    # attr_accessor :id, :project, :tracker, :status, :priority, :author, :subject, :description, :start_date, :due_date, :done_ratio, :estimated_hours
 end
 
  

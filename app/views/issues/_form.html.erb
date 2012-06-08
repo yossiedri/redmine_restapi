@@ -12,18 +12,72 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :site %><br />
-    <%= f.text_field :site %>
+    <%= f.label :id %><br />
+    <%= f.number_field :id %>
   </div>
   <div class="field">
-    <%= f.label :user %><br />
-    <%= f.text_field :user %>
+    <%= f.fields_for :project do |f| %>
+        <%= f.label :project %><br />
+        <%= f.collection_select :name ,Project.find(:all),:id,:name , {:prompt => @issue.project.name, :selected => @issue.project.name} %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :tracker do |f| %>
+      <%= f.label :tracker %><br />
+      <%= f.text_field :name, :value => @issue.tracker.name %>
+    <% end %>  
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :status do |f| %>
+      <%= f.label :status %><br />
+      <%= f.text_field :name, :value => @issue.status.name %>
+    <% end %>  
+  </div>
+
+
+  <div class="field">
+    <%= f.fields_for :priority do |f| %>
+      <%= f.label :priority %><br />
+      <%= f.text_field :name, :value => @issue.priority.name %>
+    <% end %>  
+  </div>
+
+  <div class="field">
+    <%= f.fields_for :author do |f| %>
+      <%= f.label :author %><br />
+      <%= f.text_field :name, :value => @issue.author.name %>
+    <% end %>  
+  </div>
+
+  <div class="field">
+    <%= f.label :subject %><br />
+    <%= f.text_field :subject %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
+    <%= f.label :description %><br />
+    <%= f.text_field :description %>
   </div>
+  <div class="field">
+    <%= f.label :start_date %><br />
+    <%= f.text_field :start_date %>
+  </div>
+  <div class="field">
+    <%= f.label :done_ratio %><br />
+    <%= f.number_field :done_ratio %>
+  </div>
+ <!--  <div class="field">
+    <%#= f.label :estimated_hours %><br />
+    <%#= f.number_field @issue.estimated_hours.nil? ? '' : :estimated_hours %>
+  </div> -->
+
+
   <div class="actions">
     <%= f.submit %>
   </div>
 <% end %>
+
+
+<!-- #<Issue:0xbc47e34 @attributes={"id"=>3137, "project"=>#<Issue::Project:0xbb1997c @attributes={"id"=>2973, "name"=>"Projekt 1"}, @prefix_options={}, @persisted=false>, "tracker"=>#<Issue::Tracker:0xb860410 @attributes={"id"=>1, "name"=>"Bug"}, @prefix_options={}, @persisted=false>, "status"=>#<Issue::Status:0xb9c0300 @attributes={"id"=>1, "name"=>"New"}, @prefix_options={}, @persisted=false>, "priority"=>#<Issue::Priority:0xb4cbdf4 @attributes={"id"=>4, "name"=>"Normal"}, @prefix_options={}, @persisted=false>, "author"=>#<Issue::Author:0xb39d798 @attributes={"id"=>4161, "name"=>"Indo Wo"}, @prefix_options={}, @persisted=false>, "assigned_to"=>#<Issue::AssignedTo:0xb39f46c @attributes={"id"=>4161, "name"=>"Indo Wo"}, @prefix_options={}, @persisted=false>, "subject"=>"Ticket 1", "description"=>"", "start_date"=>"2012-06-08", "due_date"=>"2012-06-15", "done_ratio"=>0, "estimated_hours"=>10.0, "created_on"=>"2012-06-08T08:06:41Z", "updated_on"=>"2012-06-08T08:06:41Z"}, @prefix_options={}, @persisted=true>
+ -->

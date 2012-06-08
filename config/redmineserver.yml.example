@@ -1,0 +1,13 @@
+development:
+ site: http://demo.redmine.org/
+ user: someuser
+ password: somepass
+test:
+ site: http://demo.redmine.org/
+ user: someuser
+ password: somepass
+production:
+ site: http://demo.redmine.org/
+ user: someuser
+ password: somepass
+	

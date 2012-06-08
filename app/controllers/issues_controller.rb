@@ -3,8 +3,9 @@ class IssuesController < ApplicationController
   # GET /issues
   # GET /issues.json
   def index
+
     @issues = Issue.find(:all)
-    puts @issues.first.subject
+    @objects = @issues
 
     respond_to do |format|
       format.html # index.html.erb
@@ -18,7 +19,7 @@ class IssuesController < ApplicationController
     @issue = Issue.find(params[:id])
     # puts @issue.description
     # puts @issue.author.name
-
+    @objects = @issue
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @issue }
@@ -29,7 +30,7 @@ class IssuesController < ApplicationController
   # GET /issues/new.json
   def new
     @issue = Issue.new
-
+    @objects = @issue
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @issue }
@@ -39,6 +40,7 @@ class IssuesController < ApplicationController
   # GET /issues/1/edit
   def edit
     @issue = Issue.find(params[:id])
+    @objects = @issue
   end
 
   # POST /issues
@@ -60,6 +62,8 @@ class IssuesController < ApplicationController
       puts @issue.errors.full_messages
     end
 
+    @objects = @issue
+
     respond_to do |format|
       if @issue.save
         format.html { redirect_to @issue, notice: 'Issue was successfully created.' }
@@ -74,20 +78,22 @@ class IssuesController < ApplicationController
   # PUT /issues/1
   # PUT /issues/1.json
   def update
+    debugger
     @issue = Issue.find(params[:id])
     @issue.subject = 'REST API'
     @issue.save
 
+    @objects = @issue
 
-    respond_to do |format|
-      if @issue.update_attributes(params[:issue])
-        format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @issue.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @issue.update_attributes(params[:issue])
+    #     format.html { redirect_to @issue, notice: 'Issue was successfully updated.' }
+    #     format.json { head :no_content }
+    #   else
+    #     format.html { render action: "edit" }
+    #     format.json { render json: @issue.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # DELETE /issues/1
